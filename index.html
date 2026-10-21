@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sara & Youssef – Invitation de mariage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+
+<div id="env" class="star">
+  <div class="wrap" id="wrap">
+    <div class="back"></div>
+    <div class="letter"><span>Vous êtes invité(e) au mariage de</span><b id="envNames"></b></div>
+    <div class="front"></div>
+    <div class="flap"></div>
+    <button class="seal" id="seal" aria-label="Ouvrir l’invitation">S&amp;Y</button>
+  </div>
+  <p class="hint">Touchez le sceau pour ouvrir</p>
+</div>
+
+<main>
+  <section id="hero" class="star">
+    <p class="welcome">Bienvenue à notre mariage</p>
+    <h1><span id="n1"></span><span class="amp">&amp;</span><span id="n2"></span></h1>
+    <p class="date" id="dateTxt"></p>
+    <div id="count" aria-live="off"></div>
+    <a class="down" href="#programme">Découvrir les détails ↓</a>
+  </section>
+
+  <section id="programme">
+    <div class="line"></div>
+    <h2>Le programme</h2>
+    <p class="lead">Une journée, quatre moments à partager avec vous.</p>
+    <ol class="tl" id="tl"></ol>
+  </section>
+
+  <section id="lieu" class="star">
+    <div>
+      <div class="line"></div>
+      <h2>Le lieu</h2>
+      <p class="lead">Là où tout commence.</p>
+      <p class="place" id="placeName"></p>
+      <p class="addr" id="placeAddr"></p>
+      <div class="btns">
+        <a class="btn" id="gmaps" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+        <a class="btn alt" id="waze" target="_blank" rel="noopener">Waze</a>
+      </div>
+      <ul class="tips" id="tips"></ul>
+    </div>
+  </section>
+
+  <section id="tenue">
+    <div class="line"></div>
+    <h2>Dress code</h2>
+    <p class="lead" id="dressTxt"></p>
+    <div class="swatches" id="sw"></div>
+  </section>
+
+  <section id="rsvp">
+    <div class="line"></div>
+    <h2>Votre réponse</h2>
+    <p class="lead" id="rsvpLead"></p>
+    <form id="f">
+      <label>Votre nom<input id="nm" required autocomplete="name"></label>
+      <label>Nombre de personnes<select id="nb"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+      <div class="ans">
+        <label><input type="radio" name="r" value="yes" checked><span>Je serai là</span></label>
+        <label><input type="radio" name="r" value="no"><span>Je ne pourrai pas</span></label>
+      </div>
+      <button class="btn" type="submit">Envoyer ma réponse sur WhatsApp</button>
+    </form>
+  </section>
+</main>
+
+<footer><p id="foot"></p></footer>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

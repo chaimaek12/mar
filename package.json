@@ -1,0 +1,14 @@
+{
+  "name": "invitation-mariage",
+  "version": "1.0.0",
+  "description": "Invitation de mariage virtuelle, créative et interactive",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": ["mariage", "invitation", "creative", "wedding"],
+  "author": "",
+  "license": "ISC"
+}

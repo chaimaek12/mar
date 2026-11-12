@@ -212,6 +212,11 @@
     // Déverrouiller le défilement immédiatement
     document.body.classList.remove("locked");
 
+    // Lancer immédiatement la musique d'Elissa lors du geste utilisateur
+    try {
+      playMusic();
+    } catch (e) {}
+
     if (fast) {
       if (wrapEl) wrapEl.classList.add("open");
       if (envEl) {
@@ -222,16 +227,6 @@
     }
 
     if (wrapEl) wrapEl.classList.add("open");
-
-    // Lancer la musique d'Elissa lors du geste d'ouverture
-    try {
-      playMusic();
-    } catch (e) {}
-
-    // Son doux d'ouverture
-    try {
-      playChimeSound();
-    } catch (e) {}
 
     // Effet d'explosion de paillettes dorées
     try {
@@ -420,9 +415,17 @@
   const musicLabel = $("musicLabel");
   let isPlayingMusic = false;
 
+  // Pre-chargement immédiat de l'audio
+  if (audioElissa) {
+    try {
+      audioElissa.load();
+    } catch (e) {}
+  }
+
   function playMusic() {
     if (audioElissa) {
-      audioElissa.volume = 0.75;
+      audioElissa.muted = false;
+      audioElissa.volume = 1.0;
       const playPromise = audioElissa.play();
       if (playPromise !== undefined) {
         playPromise.then(function () {
@@ -431,9 +434,17 @@
           if (musicLabel) musicLabel.textContent = "Elissa (En lecture 🎵)";
           if (musicToggle) musicToggle.classList.add("playing");
           showToast("🎵 Musique : Elissa – Asaad Wahda");
-        }).catch(function () {
-          // Si le navigateur bloque l'audio sans interaction
-          isPlayingMusic = false;
+        }).catch(function (e) {
+          console.warn("Audio play error:", e);
+          // Si le navigateur réclame un déblocage tactile
+          document.addEventListener("click", function unlockAudio() {
+            audioElissa.play().then(function () {
+              isPlayingMusic = true;
+              if (musicWaves) musicWaves.classList.remove("paused");
+              if (musicToggle) musicToggle.classList.add("playing");
+            }).catch(function () {});
+            document.removeEventListener("click", unlockAudio);
+          }, { once: true });
         });
       }
     }

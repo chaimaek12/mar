@@ -20,6 +20,7 @@ const MIME_TYPES = {
   '.mp3': 'audio/mpeg',
   '.ogg': 'audio/ogg',
   '.wav': 'audio/wav',
+  '.m4a': 'audio/mp4',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf'
@@ -47,22 +48,51 @@ const server = http.createServer((req, res) => {
 
     const ext = path.extname(safePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const total = stats.size;
 
-    res.writeHead(200, {
-      'Content-Type': contentType,
-      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0'
-    });
+    // Prise en charge des Range Requests (HTTP 206) indispensable pour l'audio HTML5
+    const range = req.headers.range;
+    if (range) {
+      const parts = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : total - 1;
 
-    const stream = fs.createReadStream(safePath);
-    stream.pipe(res);
+      if (start >= total || end >= total) {
+        res.writeHead(416, {
+          'Content-Range': `bytes */${total}`
+        });
+        return res.end();
+      }
+
+      const chunksize = (end - start) + 1;
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${total}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': chunksize,
+        'Content-Type': contentType,
+        'Cache-Control': 'no-cache'
+      });
+
+      const stream = fs.createReadStream(safePath, { start, end });
+      stream.pipe(res);
+    } else {
+      res.writeHead(200, {
+        'Content-Length': total,
+        'Accept-Ranges': 'bytes',
+        'Content-Type': contentType,
+        'Cache-Control': ext === '.mp3' ? 'public, max-age=86400' : 'no-cache'
+      });
+
+      const stream = fs.createReadStream(safePath);
+      stream.pipe(res);
+    }
   });
 });
 
 server.listen(PORT, () => {
   console.log(`\n======================================================`);
   console.log(`💍 Site d'invitation de mariage prêt et en ligne !`);
+  console.log(`🎵 Streaming audio HTTP 206 activé (Elissa)`);
   console.log(`🌐 URL locale : http://localhost:${PORT}`);
   console.log(`======================================================\n`);
 });

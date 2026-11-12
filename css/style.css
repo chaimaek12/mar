@@ -4,7 +4,30 @@
    ========================================================================== */
 
 /* --- Variables de thèmes --- */
-:root, [data-theme="celestial"] {
+:root, [data-theme="beige"] {
+  --theme-name: "beige";
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #F3ECE4;
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --bg-card-hover: #FFFFFF;
+  --glass-border: rgba(206, 184, 155, 0.38);
+  --text-main: #2C2523;
+  --text-muted: #7A6F68;
+  --gold: #A88352;
+  --gold-glow: rgba(168, 131, 82, 0.25);
+  --gold-gradient: linear-gradient(135deg, #8E6B3B 0%, #BFA074 50%, #7D5C2F 100%);
+  --accent: #BFA074;
+  --seal-color: #C29F70;
+  --seal-border: #9E7D52;
+  --env-back: #E8DFD5;
+  --env-front: #F2EAE1;
+  --env-flap: #EBE0D4;
+  --card-paper: #FFFFFF;
+  --card-text: #2C2523;
+  --shadow-soft: 0 12px 35px rgba(180, 155, 130, 0.12);
+}
+
+[data-theme="celestial"] {
   --theme-name: "celestial";
   --bg-primary: #0B1021;
   --bg-secondary: #121A38;
@@ -244,6 +267,34 @@ body.locked {
   padding: 20px;
   cursor: pointer;
   touch-action: manipulation;
+}
+
+[data-theme="beige"] #env {
+  background: radial-gradient(circle at center, #F6EFE7 15%, #EADBCC 55%, #CBBBAA 100%);
+}
+
+[data-theme="beige"] .seal {
+  background: radial-gradient(circle at 35% 30%, #ECD8BE, #C29F70 65%, #9E7D52 100%);
+  color: #FFFFFF;
+  border-color: #9E7D52;
+}
+
+[data-theme="beige"] .env-hint {
+  color: #5D524B;
+}
+
+[data-theme="beige"] .btn-open-direct {
+  background: linear-gradient(135deg, #F8EFE4 0%, #D8BE9A 50%, #BFA074 100%);
+  color: #2C2523;
+  box-shadow: 0 4px 20px rgba(191, 160, 116, 0.35);
+}
+
+[data-theme="beige"] .btn-skip-env {
+  color: #6D6058;
+}
+
+[data-theme="beige"] .btn-skip-env:hover {
+  color: #BFA074;
 }
 
 #env.gone {

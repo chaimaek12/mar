@@ -25,9 +25,9 @@
   }
 
   // --- Initialisation des données depuis config.js ---
-  const n1 = (window.C && C.n1) ? C.n1 : "Sara";
-  const n2 = (window.C && C.n2) ? C.n2 : "Youssef";
-  const initials = (window.C && C.initials) ? C.initials : (n1.charAt(0) + " & " + n2.charAt(0));
+  const n1 = (window.C && C.n1) ? C.n1 : "Kenza";
+  const n2 = (window.C && C.n2) ? C.n2 : "3zezna";
+  const initials = (window.C && C.initials) ? C.initials : "K & 3";
 
   if ($("n1")) $("n1").textContent = n1;
   if ($("n2")) $("n2").textContent = n2;
@@ -312,7 +312,7 @@
   });
 
   // Restaurer le thème précédent ou utiliser celui de config.js
-  const savedTheme = safeGetItem("wedding_theme_preference") || (window.C && C.defaultTheme) || "celestial";
+  const savedTheme = safeGetItem("wedding_theme_preference") || (window.C && C.defaultTheme) || "beige";
   setTheme(savedTheme);
 
   // ==========================================================================
@@ -376,6 +376,16 @@
         ambientCtx.fillStyle = "rgba(226, 142, 162, " + p.opacity * 0.6 + ")";
         ambientCtx.beginPath();
         ambientCtx.ellipse(0, 0, p.size * 2, p.size * 3.5, Math.PI / 4, 0, Math.PI * 2);
+        ambientCtx.fill();
+      } else if (currentThemeName === "beige") {
+        // Ambiance Blanc & Beige : lueur dorée champagne douce et soyeuse
+        ambientCtx.fillStyle = "rgba(191, 160, 116, " + p.opacity * 0.5 + ")";
+        ambientCtx.beginPath();
+        ambientCtx.arc(0, 0, p.size * 1.3, 0, Math.PI * 2);
+        ambientCtx.fill();
+        ambientCtx.fillStyle = "rgba(243, 236, 228, " + (p.opacity * 0.25) + ")";
+        ambientCtx.beginPath();
+        ambientCtx.arc(0, 0, p.size * 2.8, 0, Math.PI * 2);
         ambientCtx.fill();
       } else if (currentThemeName === "boho") {
         ambientCtx.fillStyle = "rgba(184, 115, 87, " + p.opacity * 0.5 + ")";

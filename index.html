@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="celestial">
+<html lang="fr" data-theme="beige">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Sara &amp; Youssef – Notre Mariage</title>
+  <title>Kenza &amp; 3zezna – Notre Mariage</title>
   
   <!-- Polices Google Fonts de prestige -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=2.1">
+  <link rel="stylesheet" href="css/style.css?v=2.2">
 </head>
 <body class="locked">
 
-  <!-- Canvas de particules douces (étoiles / pétales flottants) -->
+  <!-- Canvas de particules douces (étoiles / reflets champagne flottants) -->
   <canvas id="ambientCanvas"></canvas>
   <canvas id="confettiCanvas"></canvas>
 
@@ -24,9 +24,9 @@
   <!-- Barre flottante de commandes créatives (Thèmes & Musique) -->
   <div class="floating-controls">
     <div class="theme-pill-group" title="Changer l'ambiance visuelle">
-      <button class="theme-btn active" data-set-theme="celestial">✨ Nuit Étoilée</button>
-      <button class="theme-btn" data-set-theme="boho">🌿 Bohème</button>
-      <button class="theme-btn" data-set-theme="romantic">🌸 Rose Poudré</button>
+      <button class="theme-btn active" data-set-theme="beige">✨ Blanc &amp; Beige</button>
+      <button class="theme-btn" data-set-theme="romantic">🌸 Douceur Rosée</button>
+      <button class="theme-btn" data-set-theme="celestial">🌙 Nuit Dorée</button>
     </div>
     <div class="ctrl-divider"></div>
     <button class="music-btn" id="musicToggle" aria-label="Activer la mélodie romantique" title="Musique d'ambiance">
@@ -49,7 +49,7 @@
       <div class="letter">
         <div class="letter-border">
           <span class="letter-intro">Nous avons l'honneur de vous convier au mariage de</span>
-          <b id="envNames">Sara &amp; Youssef</b>
+          <b id="envNames">Kenza &amp; 3zezna</b>
           <span class="letter-sub" id="envDateSub">19 Juin 2027 • Casablanca</span>
         </div>
       </div>
@@ -59,7 +59,7 @@
       
       <!-- Sceau de cire gravé 3D -->
       <button class="seal" id="seal" onclick="event.stopPropagation(); if(window.openEnvelope) window.openEnvelope(false);" aria-label="Décacheter l’invitation" title="Cliquez pour ouvrir">
-        <span class="seal-crest" id="sealInitials">S&amp;Y</span>
+        <span class="seal-crest" id="sealInitials">K&amp;3</span>
         <span class="seal-icon">✦</span>
       </button>
     </div>
@@ -90,12 +90,12 @@
       <p class="hero-welcome" id="welcomeTag">Nous nous disons OUI !</p>
       
       <h1 class="hero-names">
-        <span id="n1">Sara</span>
+        <span id="n1">Kenza</span>
         <span class="hero-amp">&amp;</span>
-        <span id="n2">Youssef</span>
+        <span id="n2">3zezna</span>
       </h1>
       
-      <p class="hero-subtitle" id="welcomeSub">Deux âmes, un seul cœur. Nous serions infiniment honorés de célébrer ce moment magique à vos côtés.</p>
+      <p class="hero-subtitle" id="welcomeSub">Deux cœurs qui s'unissent. Nous serions infiniment honorés de célébrer ce moment précieux à vos côtés.</p>
       
       <div class="hero-date-badge">
         <span>💍</span>
@@ -112,31 +112,19 @@
         </a>
       </div>
 
-      <a class="scroll-down" href="#histoire">
-        <span>Découvrir notre univers</span>
+      <a class="scroll-down" href="#programme">
+        <span>Découvrir les détails</span>
         <span class="scroll-arrow">↓</span>
       </a>
     </section>
 
-    <!-- NOTRE HISTOIRE -->
-    <section id="histoire">
-      <div class="section-head">
-        <div class="flourish">❦</div>
-        <p class="section-tag">Notre Chemin Ensemble</p>
-        <h2>Notre Histoire</h2>
-        <p class="section-lead">Chaque grand amour commence par une étincelle. Voici les chapitres qui nous ont guidés jusqu'à ce jour.</p>
-      </div>
-
-      <div class="story-grid" id="storyGrid"></div>
-    </section>
-
-    <!-- PROGRAMME DÉROULÉ -->
+    <!-- PROGRAMME ÉPURÉ -->
     <section id="programme">
       <div class="section-head">
         <div class="flourish">❦</div>
         <p class="section-tag">Le Déroulement</p>
         <h2>Le Programme</h2>
-        <p class="section-lead">Une journée inoubliable rythmée par quatre temps forts d'émotion et de réjouissances.</p>
+        <p class="section-lead">Une soirée inoubliable à partager ensemble.</p>
       </div>
 
       <ol class="timeline" id="tl"></ol>
@@ -146,9 +134,9 @@
     <section id="lieu">
       <div class="section-head">
         <div class="flourish">❦</div>
-        <p class="section-tag">Destination de Rêve</p>
+        <p class="section-tag">Destination</p>
         <h2>Le Lieu</h2>
-        <p class="section-lead">Un cadre enchanteur où la magie opérera sous le ciel étoilé.</p>
+        <p class="section-lead">Là où nous célébrerons notre union avec vous.</p>
       </div>
 
       <div class="venue-card">
@@ -168,31 +156,6 @@
         </div>
 
         <div class="venue-tips-grid" id="tipsGrid"></div>
-      </div>
-    </section>
-
-    <!-- DRESS CODE & NUANCES -->
-    <section id="tenue">
-      <div class="section-head">
-        <div class="flourish">❦</div>
-        <p class="section-tag">Élégance &amp; Harmonie</p>
-        <h2>Dress Code</h2>
-        <p class="section-lead" id="dressTxt">Tenue de cocktail chic et élégante.</p>
-      </div>
-
-      <div class="swatches-wrapper">
-        <div class="swatches" id="sw"></div>
-      </div>
-
-      <div class="dress-tips-cards">
-        <div class="dress-card">
-          <h3>👗 Pour Elle</h3>
-          <p id="dressForHer">Robe longue ou tenue de cocktail vaporeuse, teintes soyeuses ou pastel, talons confortables pour danser sur les pelouses.</p>
-        </div>
-        <div class="dress-card">
-          <h3>🤵 Pour Lui</h3>
-          <p id="dressForHim">Costume deux ou trois pièces raffiné, cravate ou nœud papillon en accord avec les nuances festives de la journée.</p>
-        </div>
       </div>
     </section>
 
@@ -242,7 +205,7 @@
                 <input type="radio" name="r" value="yes" checked>
                 <div class="attendance-btn">
                   <span>🎉 Oui, avec grande joie !</span>
-                  <small>Je ne manquerais ça pour rien au monde</small>
+                  <small>Je serai présent(e) pour célébrer avec vous</small>
                 </div>
               </label>
               <label class="attendance-label">
@@ -266,13 +229,8 @@
             </select>
           </div>
 
-          <div class="form-group" id="groupDiet">
-            <label for="diet">Régime ou intolérances alimentaires (optionnel)</label>
-            <input class="form-control" id="diet" placeholder="Ex: Végétarien, sans gluten, sans fruits de mer...">
-          </div>
-
           <div class="form-group" id="groupSong">
-            <label for="song">La chanson qui vous fera danser à coup sûr 🎵</label>
+            <label for="song">Une chanson que vous aimeriez entendre 🎵</label>
             <input class="form-control" id="song" placeholder="Titre et artiste">
           </div>
 
@@ -292,9 +250,9 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-monogram" id="footMonogram">S &amp; Y</div>
+    <div class="footer-monogram" id="footMonogram">K &amp; 3</div>
     <p class="footer-quote" id="footQuote">Avec tout notre amour &amp; notre gratitude</p>
-    <div class="footer-hashtag" id="footHashtag">#SaraEtYoussef2027</div>
+    <div class="footer-hashtag" id="footHashtag">#KenzaEt3zezna</div>
     <div>
       <button class="btn-replay-env" id="btnReplayEnv">
         💌 Revoir l’ouverture de l'invitation
@@ -303,7 +261,7 @@
   </footer>
 
   <!-- Scripts avec versionnage pour forcer la mise à jour du cache -->
-  <script src="js/config.js?v=2.1"></script>
-  <script src="js/main.js?v=2.1"></script>
+  <script src="js/config.js?v=2.2"></script>
+  <script src="js/main.js?v=2.2"></script>
 </body>
 </html>

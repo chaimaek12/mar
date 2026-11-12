@@ -223,6 +223,11 @@
 
     if (wrapEl) wrapEl.classList.add("open");
 
+    // Lancer la musique d'Elissa lors du geste d'ouverture
+    try {
+      playMusic();
+    } catch (e) {}
+
     // Son doux d'ouverture
     try {
       playChimeSound();
@@ -407,81 +412,49 @@
   renderAmbient();
 
   // ==========================================================================
-  // SYNTHÉTISEUR AUDIO HARMONIQUE
+  // LECTEUR MUSICAL OFFICIEL : ELISSA
   // ==========================================================================
-  let audioCtx = null;
-  let isPlayingMusic = false;
-  let musicTimer = null;
+  const audioElissa = $("audioElissa");
   const musicToggle = $("musicToggle");
   const musicWaves = $("musicWaves");
   const musicLabel = $("musicLabel");
+  let isPlayingMusic = false;
 
-  const romanticNotes = [
-    293.66, 369.99, 440.00, 587.33,
-    220.00, 277.18, 329.63, 440.00,
-    246.94, 293.66, 369.99, 493.88,
-    185.00, 220.00, 277.18, 369.99,
-    196.00, 246.94, 293.66, 392.00,
-    220.00, 293.66, 369.99, 440.00
-  ];
-  let noteIndex = 0;
-
-  function playNote(freq, duration) {
-    if (!audioCtx) return;
-    try {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-      gain.gain.setValueAtTime(0, audioCtx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.06);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    } catch (e) {}
+  function playMusic() {
+    if (audioElissa) {
+      audioElissa.volume = 0.75;
+      const playPromise = audioElissa.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function () {
+          isPlayingMusic = true;
+          if (musicWaves) musicWaves.classList.remove("paused");
+          if (musicLabel) musicLabel.textContent = "Elissa (En lecture 🎵)";
+          if (musicToggle) musicToggle.classList.add("playing");
+          showToast("🎵 Musique : Elissa – Asaad Wahda");
+        }).catch(function () {
+          // Si le navigateur bloque l'audio sans interaction
+          isPlayingMusic = false;
+        });
+      }
+    }
   }
 
-  function stepMelody() {
-    if (!isPlayingMusic) return;
-    const freq = romanticNotes[noteIndex % romanticNotes.length];
-    playNote(freq, 1.8);
-    if (noteIndex % 2 === 0) {
-      playNote(freq * 1.5, 2.2);
+  function pauseMusic() {
+    if (audioElissa) {
+      audioElissa.pause();
     }
-    noteIndex++;
-    musicTimer = setTimeout(stepMelody, 580);
+    isPlayingMusic = false;
+    if (musicWaves) musicWaves.classList.add("paused");
+    if (musicLabel) musicLabel.textContent = "🎵 Elissa – Asaad Wahda";
+    if (musicToggle) musicToggle.classList.remove("playing");
   }
 
   function toggleMusic() {
-    try {
-      if (!audioCtx) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (AudioContextClass) audioCtx = new AudioContextClass();
-      }
-      if (audioCtx && audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-
-      isPlayingMusic = !isPlayingMusic;
-      if (isPlayingMusic) {
-        if (musicWaves) musicWaves.classList.remove("paused");
-        if (musicLabel) musicLabel.textContent = "Pause";
-        if (musicToggle) musicToggle.classList.add("playing");
-        stepMelody();
-        showToast("🎵 Ambiance romantique activée");
-      } else {
-        if (musicWaves) musicWaves.classList.add("paused");
-        if (musicLabel) musicLabel.textContent = "Musique";
-        if (musicToggle) musicToggle.classList.remove("playing");
-        clearTimeout(musicTimer);
-      }
-    } catch (e) {}
+    if (isPlayingMusic) {
+      pauseMusic();
+    } else {
+      playMusic();
+    }
   }
 
   if (musicToggle) {

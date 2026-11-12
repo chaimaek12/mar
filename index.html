@@ -21,19 +21,16 @@
   <!-- Notification Toast -->
   <div id="toast" class="toast-msg"></div>
 
-  <!-- Barre flottante de commandes créatives (Thèmes & Musique) -->
-  <div class="floating-controls">
-    <div class="theme-pill-group" title="Changer l'ambiance visuelle">
-      <button class="theme-btn active" data-set-theme="beige">✨ Blanc &amp; Beige</button>
-      <button class="theme-btn" data-set-theme="romantic">🌸 Douceur Rosée</button>
-      <button class="theme-btn" data-set-theme="celestial">🌙 Nuit Dorée</button>
-    </div>
-    <div class="ctrl-divider"></div>
-    <button class="music-btn" id="musicToggle" aria-label="Activer la mélodie romantique" title="Musique d'ambiance">
+  <!-- Audio officiel : Elissa -->
+  <audio id="audioElissa" src="assets/elissa.mp3" preload="auto" loop></audio>
+
+  <!-- Bouton Musique Flottant Élégant -->
+  <div class="floating-music-box">
+    <button class="music-btn" id="musicToggle" aria-label="Activer la musique d'Elissa" title="Elissa – Asaad Wahda">
       <div class="music-waves paused" id="musicWaves">
         <span></span><span></span><span></span>
       </div>
-      <span id="musicLabel">Musique</span>
+      <span id="musicLabel">🎵 Elissa – Asaad Wahda</span>
     </button>
   </div>
 

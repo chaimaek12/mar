@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Kenza &amp; 3zezna – Notre Mariage</title>
+  <title>Kenza &amp; Hicham – Notre Mariage</title>
   
   <!-- Polices Google Fonts de prestige -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,8 +46,8 @@
       <div class="letter">
         <div class="letter-border">
           <span class="letter-intro">Nous avons l'honneur de vous convier au mariage de</span>
-          <b id="envNames">Kenza &amp; 3zezna</b>
-          <span class="letter-sub" id="envDateSub">19 Juin 2027 • Casablanca</span>
+          <b id="envNames">Kenza &amp; Hicham</b>
+          <span class="letter-sub" id="envDateSub">19 Décembre 2026 • Casablanca</span>
         </div>
       </div>
       
@@ -56,7 +56,7 @@
       
       <!-- Sceau de cire gravé 3D -->
       <button class="seal" id="seal" onclick="event.stopPropagation(); if(window.openEnvelope) window.openEnvelope(false);" aria-label="Décacheter l’invitation" title="Cliquez pour ouvrir">
-        <span class="seal-crest" id="sealInitials">K&amp;3</span>
+        <span class="seal-crest" id="sealInitials">K&amp;H</span>
         <span class="seal-icon">✦</span>
       </button>
     </div>
@@ -89,14 +89,14 @@
       <h1 class="hero-names">
         <span id="n1">Kenza</span>
         <span class="hero-amp">&amp;</span>
-        <span id="n2">3zezna</span>
+        <span id="n2">Hicham</span>
       </h1>
       
       <p class="hero-subtitle" id="welcomeSub">Deux cœurs qui s'unissent. Nous serions infiniment honorés de célébrer ce moment précieux à vos côtés.</p>
       
       <div class="hero-date-badge">
         <span>💍</span>
-        <span id="dateTxt">Samedi 19 Juin 2027</span>
+        <span id="dateTxt">Samedi 19 Décembre 2026</span>
       </div>
 
       <!-- Compte à rebours animé -->
@@ -156,100 +156,15 @@
       </div>
     </section>
 
-    <!-- LIVRE D'OR VIRTUEL -->
-    <section id="livredor">
-      <div class="section-head">
-        <div class="flourish">❦</div>
-        <p class="section-tag">Mots Doux</p>
-        <h2>Livre d'Or Virtuel</h2>
-        <p class="section-lead">Laissez une pensée, un vœu de bonheur ou un souvenir précieux pour illuminer notre cœur.</p>
-      </div>
-
-      <div class="guestbook-box">
-        <form class="guestbook-form" id="guestbookForm">
-          <input type="text" class="guestbook-input" id="gbAuthor" placeholder="Votre nom ou signature" required>
-          <textarea class="guestbook-textarea" id="gbMessage" placeholder="Écrivez vos vœux les plus chaleureux pour les futurs mariés..." required></textarea>
-          <button type="submit" class="btn-route primary" style="align-self: flex-start;">
-            💌 Publier dans le livre d’or
-          </button>
-        </form>
-
-        <div class="guestbook-feed" id="guestbookFeed"></div>
-      </div>
-    </section>
-
-    <!-- RSVP AVEC ENVOI WHATSAPP -->
-    <section id="rsvp">
-      <div class="section-head">
-        <div class="flourish">❦</div>
-        <p class="section-tag">Votre Réponse</p>
-        <h2>Confirmez votre présence</h2>
-        <p class="section-lead" id="rsvpLead">Merci de répondre avant le 1er mai 2027 pour nous aider dans les préparatifs.</p>
-      </div>
-
-      <div class="rsvp-card">
-        <form class="rsvp-form" id="rsvpForm">
-          
-          <div class="form-group">
-            <label for="nm">Votre Prénom &amp; Nom</label>
-            <input class="form-control" id="nm" required autocomplete="name" placeholder="Ex: Nadia &amp; Karim">
-          </div>
-
-          <div class="form-group">
-            <label>Serez-vous parmi nous ?</label>
-            <div class="attendance-toggle">
-              <label class="attendance-label">
-                <input type="radio" name="r" value="yes" checked>
-                <div class="attendance-btn">
-                  <span>🎉 Oui, avec grande joie !</span>
-                  <small>Je serai présent(e) pour célébrer avec vous</small>
-                </div>
-              </label>
-              <label class="attendance-label">
-                <input type="radio" name="r" value="no">
-                <div class="attendance-btn">
-                  <span>💐 Par la pensée</span>
-                  <small>Je ne pourrai malheureusement pas être présent(e)</small>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group" id="groupGuestCount">
-            <label for="nb">Nombre total de convives</label>
-            <select class="form-control" id="nb">
-              <option value="1">1 personne</option>
-              <option value="2" selected>2 personnes</option>
-              <option value="3">3 personnes</option>
-              <option value="4">4 personnes</option>
-              <option value="5">5 personnes</option>
-            </select>
-          </div>
-
-          <div class="form-group" id="groupSong">
-            <label for="song">Une chanson que vous aimeriez entendre 🎵</label>
-            <input class="form-control" id="song" placeholder="Titre et artiste">
-          </div>
-
-          <button class="btn-rsvp-submit" type="submit">
-            <span>Envoyer ma confirmation via WhatsApp</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.997.568 1.966.866 2.796.866 3.18 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.768-5.767-5.768zm0 10.375c-.752 0-1.637-.233-2.378-.672l-.17-.101-1.758.461.469-1.714-.112-.178c-.482-.767-.736-1.554-.735-2.404.001-2.539 2.066-4.604 4.606-4.604 2.539 0 4.604 2.065 4.604 4.605 0 2.54-2.065 4.607-4.606 4.607zm3.115-3.469c-.171-.086-.998-.492-1.153-.548-.154-.056-.266-.086-.378.086-.112.171-.434.548-.532.66-.098.112-.196.126-.367.04-.171-.086-.723-.267-1.378-.851-.51-.454-.854-1.015-.954-1.186-.1-.171-.011-.264.075-.349.077-.077.171-.2.257-.3.086-.1.114-.171.171-.286.057-.114.029-.214-.014-.3-.043-.086-.378-.91-.518-1.246-.137-.327-.276-.282-.378-.287l-.323-.006c-.112 0-.294.043-.448.214-.154.171-.588.575-.588 1.401 0 .826.602 1.624.686 1.738.084.114 1.185 1.809 2.871 2.537.401.173.714.276.958.354.403.128.77.11 1.06.067.324-.048.998-.408 1.139-.802.14-.394.14-.732.098-.802-.042-.07-.154-.112-.325-.198z"/>
-            </svg>
-          </button>
-
-          <p class="rsvp-note">Vos informations seront directement transmises aux futurs mariés.</p>
-        </form>
-      </div>
-    </section>
-
+    
   </main>
+
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-monogram" id="footMonogram">K &amp; 3</div>
+    <div class="footer-monogram" id="footMonogram">K &amp; H</div>
     <p class="footer-quote" id="footQuote">Avec tout notre amour &amp; notre gratitude</p>
-    <div class="footer-hashtag" id="footHashtag">#KenzaEt3zezna</div>
+    <div class="footer-hashtag" id="footHashtag">#KenzaEtHicham</div>
     <div>
       <button class="btn-replay-env" id="btnReplayEnv">
         💌 Revoir l’ouverture de l'invitation

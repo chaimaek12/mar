@@ -49,7 +49,7 @@
   if (window.C) {
     const mapQuery = encodeURIComponent(C.mapQuery || (C.place + " " + C.addr));
     if ($("gmaps")) $("gmaps").href = "https://www.google.com/maps/search/?api=1&query=" + mapQuery;
-    if ($("waze")) $("waze").href = "https://waze.com/ul?q=" + mapQuery + "&navigate=yes";
+    var wazeLink = (C.wazeUrl && C.wazeUrl.length > 0) ? C.wazeUrl : ("https://waze.com/ul?q=" + mapQuery + "&navigate=yes"); if ($("waze")) $("waze").href = wazeLink;
   }
 
   // Copier l'adresse
